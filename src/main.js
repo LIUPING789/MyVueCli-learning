@@ -6,13 +6,13 @@ import Vue from "vue";
 import App from "./App.vue";
 
 //引入插件
-import plugins from "./plugins";
+import vueResource from "vue-resource";
 
 //关闭生产模式下给出的提示
 Vue.config.productionTip = false;
 
 //应用插件
-Vue.use(plugins);
+Vue.use(vueResource);
 //创建Vue实例
 new Vue({
   el: "#app",

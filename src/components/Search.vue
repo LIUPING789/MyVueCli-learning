@@ -15,7 +15,7 @@
 <script>
 //https://api.github.com/search/users?q=xxxy
 
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "Search",
@@ -35,24 +35,25 @@ export default {
         errMsg: "",
         users: [],
       });
-      axios.get(`https://api.github.com/search/users?q=${this.keyword}`).then(
-        (response) => {
-          console.log("请求成功：", response.data.items);
-          this.$bus.$emit("updateListData", {
-            isLoadings: false,
-            errMsg: "",
-            users: response.data.items,
-          });
-        },
-        (error) => {
-          console.log("请求失败：", error);
-          this.$bus.$emit("updateListData", {
-            isLoadings: false,
-            errMsg: error.message,
-            users: [],
-          });
-        }
-      );
+        this.$http.get(`https://api.github.com/search/users?q=${this.keyword}`).then(
+          (response) => {
+            console.log("请求成功：", response.data.items);
+            this.$bus.$emit("updateListData", {
+              isLoadings: false,
+              errMsg: "",
+              users: response.data.items,
+            });
+          },
+          (error) => {
+            console.log("请求失败：", error);
+            this.$bus.$emit("updateListData", {
+              isLoadings: false,
+              errMsg: error.message,
+              users: [],
+            });
+          }
+        );
+      console.log(this);
     },
   },
 };
