@@ -213,3 +213,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     4、提供数据 pubsub.publish('xxx',data)
     
     5、页面消失后：最好在 Vue 生命周期的 'beforeDestroy'钩子中，用pubsub.unsubscribe(pid) 去取消订阅
+
+
+
+
+
+    ### nextTick
+    1.语法：this.$nextTick(callback)
+    2.作用：在下一次DOM更新结束后执行其指定的回调。
+    3.什么时间用：当改变数据后，要基于更新后的DOM进行操作时，用到nextTick。
+    4.注意：nextTick的回调函数中不要包含异步操作，否则会导致下一次DOM更新时，回调函数还未执行。
