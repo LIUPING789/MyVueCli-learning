@@ -249,3 +249,48 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
         3.v-leave-to：离开的终点
 
     2.使用<transition>组件包裹需要过度的元素，并给transition组件添加name属性，值为过度的名称。
+
+
+    ### Vue 脚手架配制代码 
+
+        #### 方式一
+             在vue.config.js中配置：
+             module.exports = {     
+              ...,
+              devServer:{
+                proxy:"http://localhost:8080"
+              }
+            }
+        说明：
+        1.优点：配置简单，请求资源时直接发给前端（8080）即可。
+        2.缺点：不能配置多个代理，不能灵活的控制请求是否走代理
+        3.工作方式：若按照上述配置代理，当请求了前端不存在的资源时，那么该请求会转发给服务器（优先匹配前端资源）
+
+
+    #### 方式二：    
+
+
+      devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',// 代理地址
+        pathRewrite: {},//重写路径，用通配符如：{'^/api': ''}
+        ws: true, // 用于支持websocket
+        changeOrigin: true,
+      },
+       '/api2': {
+        target: 'http://localhost:5000',// 代理地址
+        pathRewrite: {},//重写路径，用通配符如：{'^/api2': ''}
+        ws: true, // 用于支持websocket
+        changeOrigin: true,
+      }
+    }
+  }
+
+  说明：
+    1.优点：可以配置多个代理，且可以灵活的控制请求是否走代理
+    2.缺点：配置略微繁琐，请求资源时必须加前缀。
+
+
+
+

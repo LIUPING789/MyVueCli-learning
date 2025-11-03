@@ -1,0 +1,5 @@
+{
+    "name "："vue-demo",
+    "version": "1.0.0",
+    "description": "a vue project",
+}
