@@ -223,3 +223,29 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     2.作用：在下一次DOM更新结束后执行其指定的回调。
     3.什么时间用：当改变数据后，要基于更新后的DOM进行操作时，用到nextTick。
     4.注意：nextTick的回调函数中不要包含异步操作，否则会导致下一次DOM更新时，回调函数还未执行。
+
+
+
+    ### Vue封装的过度与动画
+
+    1.作用：在插入、更新或移动DOM元素时，在合适的时候给元素添加样式类名。
+
+    2.使用：
+        1.过度：v-enter-active、v-enter、v-enter-to、v-leave-active、v-leave、v-leave-to
+        2.动画：v-move-transition、v-move-enter、v-move-leave、v-move-enter-active、v-move-leave-active、v-move-enter-to、v-move-leave-to
+
+    3、写法：
+
+  3.写法：
+    1.准备好样式：
+        ·元素进入的样式：
+        1.v-enter:进入的起点
+        2.v-enter-active：进入过程中
+        3.v-enter-to：进入的终点
+
+        ·元素离开的样式：
+        1.v-leave：离开的起点
+        2.v-leave-active：离开过程中
+        3.v-leave-to：离开的终点
+
+    2.使用<transition>组件包裹需要过度的元素，并给transition组件添加name属性，值为过度的名称。
