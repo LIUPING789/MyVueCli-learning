@@ -1,10 +1,9 @@
 <template>
   <!-- 这里必须有一个根元素 -->
-  <div class="app">
-    <h1>{{ msg }}</h1>
-    <School></School>
+  <div>
+    <Student />
     <hr />
-    <Student></Student>
+    <School />
   </div>
 </template>
 
@@ -29,7 +28,4 @@ export default {
 </script>
 
 <style>
-.app {
-  background-color: blue;
-}
 </style>

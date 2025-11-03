@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>浏览器本地存储</h1>
+    <button onclick="saveData()">点我保存数据</button>
+    <button onclick="readData()">读取数据</button>
+    <button onclick="deleteData()">删除数据</button>
+    <button onclick="deleteAllData()">清空数据</button>
+
+</body>
+<script>
+    // 保存数据到本地存储
+    function saveData() {
+        console.log("保存数据到本地存储");
+        sessionStorage.setItem("name", "张三");
+        sessionStorage.setItem("age", "25");
+    }
+
+    // 读取本地存储的数据
+    function readData() {
+        console.log("读取本地存储的数据");
+        var name = sessionStorage.getItem("name");
+        var age = sessionStorage.getItem("age");
+        console.log("name:" + name + ",age:" + age);
+    }
+    // 删除本地存储的数据
+    function deleteData() {
+        console.log("删除本地存储的数据");
+        sessionStorage.removeItem("name");
+        sessionStorage.removeItem("age");
+    }
+    // 清空本地存储的数据
+    function deleteAllData() {
+        console.log("清空本地存储的数据");
+        sessionStorage.clear();
+    }   
+</script>
+
+</html>

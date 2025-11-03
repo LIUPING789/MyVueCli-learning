@@ -1,17 +1,17 @@
 <template>
   <!-- 这里必须有一个根元素 -->
-  <div class="app">
-    <h1>{{ msg }}</h1>
-    <School></School>
+  <div>
+    <Student ref="sch" name="李四" sex="男" :age="18" />
     <hr />
-    <Student></Student>
+    <Student ref="sch" name="王五" sex="女" age="28" />
+    <hr />
+    <Student ref="sch" name="赵六" sex="男" age="24" />
   </div>
 </template>
 
 <script>
 //引用组件
 import Student from "./components/Student.vue";
-import School from "./components/School.vue";
 export default {
   name: "App",
   data() {
@@ -23,13 +23,9 @@ export default {
   //注册组件
   components: {
     Student,
-    School,
   },
 };
 </script>
 
 <style>
-.app {
-  background-color: blue;
-}
 </style>
