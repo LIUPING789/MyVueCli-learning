@@ -294,3 +294,46 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 
+### 插槽
+   1.作用：让父组件可以身子组件指定位置插入html结构，也是一种组件间通信的方式。  适用于 父组件 ==> 子组件通信。
+   2.分类：默认插槽、具名插槽、作用域插槽。
+   3.使用方式：
+        1.默认插槽：
+            父组件中：
+               <Category><div>默认插槽</div></Category>
+            子组件中：
+               <template>
+                  <div>
+                     <slot></slot>
+                  </div>
+               </template>
+        2.具名插槽：
+            父组件中：
+               <Category>
+                  <template slot="header">
+                     <h1>头部</h1>
+                  </template>
+                  <template slot="content">
+                     <div>内容</div>
+                  </template>
+               </Category>
+            子组件中：
+               <template>
+                  <div>
+                     <slot name="header"></slot>
+                     <slot name="content"></slot>
+                  </div>
+               </template>
+        3.作用域插槽：
+            父组件中：
+               <Category :data="xxx">
+                  <template slot-scope="scope">
+                     <div>{{scope.data}}</div>
+                  </template>
+               </Category>
+            子组件中：
+               <template>
+                  <div>
+                     <slot :data="data"></slot>
+                  </div>
+               </template>  
