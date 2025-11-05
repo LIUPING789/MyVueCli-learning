@@ -1,9 +1,8 @@
 <template>
   <div>
-    <!-- 可以直接用简写模板 -->
-    <h1>当前求和为：{{ sum }}</h1>
-    <h3>当前求和放大10倍为：{{ bigSum }}</h3>
-    <h3>我在{{ $store.state.school }},学习:{{ $store.state.subject }}</h3>
+    <h1>当前求和为：{{ $store.state.sum }}</h1>
+    <!-- 使用getters获取当前的和，并放大10倍 -->
+    <h3>当前求和放大10倍为：{{ $store.getters.bigSum }}</h3>
     <!-- x-model绑定当前的和，v-model绑定用户选择的数值 -->
     <select v-model.number="n">
       <option value="1">1</option>
@@ -18,8 +17,6 @@
 </template>
 
 <script>
-//导入vuex中的mapState方法
-import { mapState } from "vuex";
 export default {
   name: "Count",
 
@@ -27,24 +24,6 @@ export default {
     return {
       n: 1, //用户选择的数值
     };
-  },
-
-  //使用计算属性，vuex 中 store中的数据
-  computed: {
-    sum() {
-      return this.$store.state.sum;
-    },
-
-    //计算属性，依赖于state中的sum
-    bigSum() {
-      return this.$store.getters.bigSum;
-    },
-  },
-  mounted() {
-    const x = mapState({
-      sum: "sum",
-    });
-    console.log("mounted----", x);
   },
   methods: {
     butPlus() {

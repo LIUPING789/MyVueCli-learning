@@ -387,3 +387,32 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
     ```
 
+   3.组件中读取vuex中的数据：$store.state.xxx
+   
+   4.组件中修改vuex中的数据：$store.dispatch('actions中的方法名',data) 或 $store.commit('mutations中的方法名',data)
+
+
+
+### Vuex 中的getters 使用
+
+    1.概念：Vuex中的getters是对state的计算结果，类似于计算属性。
+
+    2.在 store.js 中追加 getters 配制：
+
+    ```
+        // getters 用于获取 state 的计算结果
+        const getters = {
+            // 计算属性
+            reversedMessage: state => state.message.split('').reverse().join('')
+        }
+
+        // 创建 并导出 store 对象
+        export default new Vuex.Store({
+            actions,
+            mutations,
+            state,
+            getters
+        })
+    ```
+
+    3.在组件中读取 getters 中的数据：this.$store.getters.xxx
