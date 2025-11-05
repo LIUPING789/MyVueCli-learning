@@ -416,3 +416,57 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     ```
 
     3.在组件中读取 getters 中的数据：this.$store.getters.xxx
+
+
+    ### Vue 路由
+
+    1.理解：一个路由(route)就是一组映射关系（key-value），多个路由需要于路由器（router）进行管理 
+
+    2.前端路由：key 是路径，value 是组件。
+
+
+    ### 1、基本使用
+
+     1.安装：npm install vue-router
+
+     2.应用插件：Vue.use(VueRouter)
+
+     3.编写路由配制项：
+
+     ```
+        
+            //引入路由
+            import VueRouter from 'vue-router'
+
+            // 引入组件
+            import Home from '../components/Home.vue'
+            import About from '../components/About.vue'
+
+            //创建一个路由实例、前导出
+            export default new VueRouter({
+                routes: [{
+                    path: '/about',
+                    component: About
+                },
+                {
+                    path: '/home',
+                    component: Home
+                }]
+            });
+
+     ```
+
+
+4.实现切换（active-class 可以实现路由高亮）样式：
+    ```
+  
+     <router-link class="list-group-item" active-class="active" to="/home"
+            >Home</router-link
+
+   ```
+
+
+5.指定展示位置 
+```
+<router-view></router-view>
+```
