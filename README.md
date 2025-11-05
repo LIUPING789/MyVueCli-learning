@@ -470,3 +470,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ```
 <router-view></router-view>
 ```
+
+### 2.几个注意点
+    1.路由组件通常存放在pages目录下，一般组件通常放在components目录下。
+    
+    2.通过切换，“隐藏”了的路由组件，默认是会被销毁的，需要的时候再去挂载。
+    
+    每个组件都有自己的$route属性，里需存储了自己的路由信息。
+    
+    4.整个应用只有一个router,可以通过this.$router访问。
