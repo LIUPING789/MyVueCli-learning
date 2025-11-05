@@ -337,3 +337,53 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
                      <slot :data="data"></slot>
                   </div>
                </template>  
+
+
+ ### Vuex    
+
+    1.概念
+
+    在Vue中实现集中式状态（数据） 管理一个Vue的插件，对vue应用中多个组的共享状态进行集中式的管理（读、写） 也是一种组件间通信的方式，且适于任意组件间通信。
+
+    2.何时使用？
+
+    多个组件需要共享数据时
+
+
+    3.搭建Vuex环境
+
+    1.创建文件：src/store/index.js
+
+    ```
+        
+        //该文件用于创建Vuex中最为核心的store对象，并将其注册到Vue实例中。
+
+        //引入Vue核心库
+        import Vue from 'vue'
+        //引入Vuex
+        import Vuex from 'vuex'
+
+        //应用Vuex 插件
+        Vue.use(Vuex)
+
+        //准备 actions、mutations、state 三个对象
+
+        // actions 用于响应组件中的动作：处理异步操作，如网络请求、数据存储等
+        const actions = {}
+
+        // 准备mutations  -----用于操作数据
+        const mutations = {}
+
+        // 准备state  -----用于存储数据
+        const state = {}
+
+
+        //创建 并导出 store 对象
+        export default new Vuex.Store({
+            actions,
+            mutations,
+            state
+        })
+
+    ```
+
