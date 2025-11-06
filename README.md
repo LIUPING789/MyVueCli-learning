@@ -760,7 +760,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
        ```
 
-    3.独享守卫:
+    4.独享守卫:
      ```
 
        beforeEnter(to, from, next) {
@@ -784,3 +784,37 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
                     },
 
      ```   
+
+
+5.组件内守卫：  beforeRouteEnter-beforeRouteLeave
+
+    ```
+        
+  //通过路由规则，进入该组件时被调用
+  beforeRouteEnter(to, from, next) {
+    console.log("About页面-beforeRouteEnter");
+
+    let token = "Kn31231ight";
+    console.log("路由独享守卫");
+    console.log("to", to);
+    console.log("from", from);
+    //判断是否需要拦截
+    if (to.meta.isAuth) {
+      if (token === "Knight") {
+        next();
+      } else {
+        alert("你没有权限访问该页面");
+      }
+    } else {
+      // 直接放行
+      next();
+    }
+  },
+
+  //通过路由规则，离开该组件时被调用
+  beforeRouteLeave(to, from, next) {
+    console.log("About页面-beforeRouteLeave");
+    next();
+  },
+
+    ``` 
