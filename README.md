@@ -708,10 +708,54 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     ``` 
 
 
+
+
+
 #### 11.两个新的生命周期钩子
 
-    1.作用：路由组件所独有的两个生命周期钩子，用于捕获组件的激活和失活状态。
+        1.作用：路由组件所独有的两个生命周期钩子，用于捕获组件的激活和失活状态。
 
-    2.具体名字：
+     2.具体名字：
         1.activated：组件被激活时触发
         2.deactivated：组件被失活时触发
+
+
+
+#### 12.路由守卫
+
+    1.作用：对路由进行权限控制
+
+    2.分类：全局守卫、独享守卫、组件内守卫
+
+    3.全局守卫：
+
+       ```
+            //全局前置守卫   路由跳转前执行
+            router.beforeEach((to, from, next) => {
+                let token = "Kn31231ight"
+                console.log('全局----前置守卫')
+                console.log("to", to)
+                console.log("from", from)
+                //判断是否需要拦截
+                if (to.meta.isAuth) {
+                    if (token === "Knight") {
+                        next()
+                    } else {
+                        alert("你没有权限访问该页面")
+                    }
+                } else {
+                    // 直接放行
+                    next()
+                }
+            });
+            
+            //全局后置守卫   路由跳转后执行
+            router.afterEach((to, from) => {
+                console.log('全局----后置守卫')
+                console.log("to", to)
+                console.log("from", from)
+                //设置页面标题
+                document.title = to.meta.title || "我的系统"
+            });
+
+       ```
