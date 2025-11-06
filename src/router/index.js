@@ -20,14 +20,14 @@ export default new VueRouter({
         {
             path: '/home',
             component: Home,
-            children: [
+            children: [ //通过children属性配置子路由
                 // 二级路由
                 {
-                    path: 'news',
+                    path: 'news',//此处一定不要写 "/"： /news
                     component: News
                 },
                 {
-                    path: 'message',
+                    path: 'message',//此处一定不要写 "/"
                     component: Message
                 }
             ]
