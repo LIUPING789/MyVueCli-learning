@@ -647,3 +647,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
         $route.params.id // 接收id参数
         $route.params.title // 接收title参数
         ```
+
+
+### 8.<router-link>的replace属性
+
+    1.作用：当路由切换时，不会留下历史记录，只会替换当前的历史记录。
+    
+    2.浏览器的历史记录有两种写入方式：分别为push和replace。 push：在当前历史记录中添加一个新的记录，replace：替换当前历史记录。
+
+    3.如何开启 replace 模式：  <router-link :to="{ path: '/about', replace: true }">About</router-link >
