@@ -656,3 +656,39 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     2.浏览器的历史记录有两种写入方式：分别为push和replace。 push：在当前历史记录中添加一个新的记录，replace：替换当前历史记录。
 
     3.如何开启 replace 模式：  <router-link :to="{ path: '/about', replace: true }">About</router-link >
+
+
+### 9.编程式导航
+
+    1.作用：不借住<router-link>组件，通过代码的方式实现路由的切换。
+
+    2.具体编辑码：
+    
+    ```
+
+          methods: {
+    push(item) {
+      console.log("push");
+      this.$router.push({
+        name: "detail", //这里不能写 全路径，必须使用：命名
+        params: { id: item.id, title: item.title },
+      });
+    },
+    replace(item) {
+      console.log("replace");
+      this.$router.replace({
+        name: "detail", //这里不能写 全路径，必须使用：命名
+        params: { id: item.id, title: item.title },
+      });
+    },
+  },
+
+
+     this.$router.back(); // 返回上一级路由
+
+     this.$router.go(-2); // 可前进，可后退，参数为整数，表示返回几级路由。
+
+     this.$router.forward(); //前进
+
+    
+    ```
