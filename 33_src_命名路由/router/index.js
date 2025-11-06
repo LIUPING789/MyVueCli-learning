@@ -34,7 +34,7 @@ export default new VueRouter({
                     children: [
                         {
                             name: "detail",//命名路由
-                            path: 'detail/:id/:title',//如果使用 params 接收参数，则需要占位符
+                            path: 'detail',
                             component: Detail
                         }
                     ]

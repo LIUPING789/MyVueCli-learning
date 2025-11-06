@@ -596,3 +596,54 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
          ```
 
+
+
+#### 6.路由的params参数
+
+        1.配制路由，声明params参数：
+
+        ```
+
+          {
+            path: '/home',
+            component: Home,
+            children: [ //通过children属性配置子路由
+                // 二级路由
+                {
+                    path: 'news',//此处一定不要写 "/"： /news
+                    component: News
+                },
+                {
+                    path: 'message',//此处一定不要写 "/"
+                    component: Message,
+                    // 三级路由
+                    children: [
+                        {
+                            name: "detail",//命名路由
+                            path: 'detail/:id/:title',//如果使用 params 接收参数，则需要占位符
+                            component: Detail
+                        }
+                    ]
+                }
+            ]
+        }
+        ```
+
+        2.传递params参数：
+
+        ```
+        <router-link
+          :to="{
+            name: 'detail',//命名路由
+            params: { id: item.id, title: item.title },
+          }"
+          >{{ item.title }}</router-link>
+        ```
+
+        3.接收params参数：
+
+        ```
+        // 接收params参数
+        $route.params.id // 接收id参数
+        $route.params.title // 接收title参数
+        ```
