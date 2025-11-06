@@ -692,3 +692,17 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
     
     ```
+
+
+#### 10.缓存组件
+
+    1.作用：让不展示的路由组件保持挂载，不被销毁 
+
+    2.具体编辑码：
+    ```
+    <!--  keep-alive 组件可以缓存组件，当切换路由时，不会重新渲染组件，提高性能  News:组件名-->
+      <keep-alive include="News">
+        <router-view></router-view>
+      </keep-alive>
+
+    ``` 
