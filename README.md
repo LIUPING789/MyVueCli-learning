@@ -759,3 +759,28 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
             });
 
        ```
+
+    3.独享守卫:
+     ```
+
+       beforeEnter(to, from, next) {
+                        // 路由独享守卫
+                        // 判断是否需要登录才能访问该页面
+                        let token = "Kn31231ight"
+                        console.log('路由独享守卫')
+                        console.log("to", to)
+                        console.log("from", from)
+                        //判断是否需要拦截
+                        if (to.meta.isAuth) {
+                            if (token === "Knight") {
+                                next()
+                            } else {
+                                alert("你没有权限访问该页面")
+                            }
+                        } else {
+                            // 直接放行
+                            next()
+                        }
+                    },
+
+     ```   
