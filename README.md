@@ -479,3 +479,73 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     每个组件都有自己的$route属性，里需存储了自己的路由信息。
     
     4.整个应用只有一个router,可以通过this.$router访问。
+
+  ### 3.多级路由 
+
+  1.配制路由规则，使用children属性
+
+    ```
+        export default new VueRouter({
+    routes: [
+        // 一级路由
+        {
+            path: '/about',
+            component: About
+        },
+        {
+            path: '/home',
+            component: Home,
+            children: [ //通过children属性配置子路由
+                // 二级路由
+                {
+                    path: 'news',//此处一定不要写 "/"： /news
+                    component: News
+                },
+                {
+                    path: 'message',//此处一定不要写 "/"
+                    component: Message,
+                    // 三级路由
+                    children: [
+                        {
+                            path: 'detail',
+                            component: Detail
+                        }
+                    ]
+                }
+            ]
+        }]
+});
+
+    ```
+
+
+ ### 4、路由的query参数   
+
+ 1.传递query参数：
+
+    ```
+  <!-- 跳转路由并携带query参数，to的字符串写法  -->
+
+        <router-link
+          :to="`/home/message/detail?id=${item.id}&title=${item.title}`"
+          >跳转</router-link>
+
+
+   
+        <!-- 跳转路由并携带query参数，to的对象写法  -->
+        <router-link
+          :to="{
+            path: '/home/message/detail',
+            query: { id: item.id, title: item.title },
+          }"
+          >跳转</router-link>       
+
+    ```
+  2.接收query参数
+
+  ```
+    // 接收query参数
+    $route.query.id // 接收id参数
+    $route.query.title // 接收title参数
+  ```  
+   
