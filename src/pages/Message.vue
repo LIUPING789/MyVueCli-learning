@@ -11,7 +11,7 @@
         <!-- 跳转路由并携带query参数，to的对象写法  -->
         <router-link
           :to="{
-            path: '/home/message/detail',
+            name: 'detail',
             query: { id: item.id, title: item.title },
           }"
           >{{ item.title }}</router-link>

@@ -549,3 +549,50 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     $route.query.title // 接收title参数
   ```  
    
+
+   ### 5、命名路由
+
+        1.作用：可以简化路由的书写，提高可读性。
+
+        2.如何使用：
+
+            第一步：在路由配制项中，给路由添加name属性：
+
+            ```
+               {
+            path: '/home',
+            component: Home,
+            children: [ //通过children属性配置子路由
+                // 二级路由
+                {
+                    path: 'news',//此处一定不要写 "/"： /news
+                    component: News
+                },
+                {
+                    path: 'message',//此处一定不要写 "/"
+                    component: Message,
+                    // 三级路由
+                    children: [
+                        {
+                            name: "detail",//命名路由
+                            path: 'detail',
+                            component: Detail
+                        }
+                    ]
+                }
+            ]
+        }
+            ```
+
+         第二步：简第跳转
+
+         ```
+        <router-link
+          :to="{
+            name: 'detail',//命名路由
+            query: { id: item.id, title: item.title },
+          }"
+          >{{ item.title }}</router-link>
+
+         ```
+

@@ -33,6 +33,7 @@ export default new VueRouter({
                     // 三级路由
                     children: [
                         {
+                            name: "detail",//命名路由
                             path: 'detail',
                             component: Detail
                         }
