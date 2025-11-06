@@ -706,3 +706,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
       </keep-alive>
 
     ``` 
+
+
+#### 11.两个新的生命周期钩子
+
+    1.作用：路由组件所独有的两个生命周期钩子，用于捕获组件的激活和失活状态。
+
+    2.具体名字：
+        1.activated：组件被激活时触发
+        2.deactivated：组件被失活时触发
